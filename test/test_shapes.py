@@ -2,7 +2,7 @@ import shapes.calculate as sc
 
 
 def test_shapes_rectangle():
-    tr = sc.Rectangle(2, 3)
+    tr = sc.Rectangle(2, 3, 0)
     assert tr.area() == 6
     assert tr.perimeter() == 10
     assert tr.volume() == 0

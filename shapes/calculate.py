@@ -1,4 +1,16 @@
-class Rectangle():
+class Rectangle:
+    """Calculate values of a rectangle.
+
+    Attributes:
+        area (float) calculate the area, optionally using height
+        perimeter (float) calculate the perimeter, optionally using height
+        volume (float) calculate the volume, optionally using height
+
+    Returns:
+        Calculted value based on length, width and height
+
+    """
+
     def __init__(self, length, width, height=0):
         self.length = length
         self.width = width
@@ -6,20 +18,25 @@ class Rectangle():
 
     def __repr__(self):
         if not self.height:
-            return (f"{self.__class__.__name__}("
-                    f"{self.length!r}, {self.width!r})")
+            return f"{self.__class__.__name__}(" f"{self.length!r}, {self.width!r})"
         else:
-            return (f"{self.__class__.__name__}("
-                    f"{self.length!r}, {self.width!r}, {self.height!r})")
+            return (
+                f"{self.__class__.__name__}("
+                f"{self.length!r}, {self.width!r}, {self.height!r})"
+            )
 
     def __str__(self):
         if not self.height:
-            return (f"A {self.__class__.__name__} "
-                    f"of length: {self.length!r}, and width: {self.width!r}")
+            return (
+                f"A {self.__class__.__name__} "
+                f"of length: {self.length!r}, and width: {self.width!r}"
+            )
         else:
-            return (f"A {self.__class__.__name__} "
-                    f"of length: {self.length!r}, width: {self.width!r}, "
-                    f"height: {self.height!r}")
+            return (
+                f"A {self.__class__.__name__} "
+                f"of length: {self.length!r}, width: {self.width!r}, "
+                f"height: {self.height!r}"
+            )
 
     def area(self):
         if not self.height:
@@ -55,7 +72,6 @@ class Cube(Rectangle):
 
 
 class Box(Rectangle):
-
     def surface_area(self):
         l_w = self.length * self.width
         w_h = self.width * self.height
