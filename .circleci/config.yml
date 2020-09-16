@@ -1,15 +1,21 @@
-version: 2.1
+version: 2.0
 jobs:
   build:
+    working_directory: ~/repo
     docker:
       - image: 'circleci/python:latest'
     steps:
       - checkout
       - run:
-        command: |
-          python3 -m pip install -r requirements.txt
-          python3 -m pip install -e .
+          name: Install Python deps in a venv
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            python -m pip install -r requirements/dev.txt
+            python -m pip install -e .
       - run:
-        command: |
-          flake8 --statistics
-          pytest -v --cov .
+					name:  Run tests in same venv
+					command: |
+            . venv/bin/activate
+						python -m flake8 --statistics
+						python -m pytest -v --cov .
