@@ -14,8 +14,8 @@ jobs:
             python -m pip install -r requirements/dev.txt
             python -m pip install -e .
       - run:
-					name:  Run tests in same venv
-					command: |
+          name:  Run tests in same venv
+          command: |
             . venv/bin/activate
-						python -m flake8 --statistics
-						python -m pytest -v --cov .
+            python -m flake8 --statistics
+            python -m pytest -v --cov .
