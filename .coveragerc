@@ -1,14 +1,18 @@
 [run]
 omit =
-    .venv
-    ./test/*
+    */venv/*
+    */.venv/*
+    */test/*
 
 [report]
 exclude_lines =
-    # Don't complain about missing debug-only code:
+    pragma: no cover
+    skip_empty = true
     def __repr__
-    if self\.debug
-
+    if self.debug:
+    if settings.DEBUG
+    raise AssertionError
+    raise NotImplementedError
     # Don't complain if non-runnable code isn't run:
     if 0:
     if __name__ == .__main__.:

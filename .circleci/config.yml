@@ -11,11 +11,16 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            python -m pip install -r requirements.txt
-            python -m pip install -e .
+            pip install --upgrade pip
+            pip install -r requirements.txt
+            pip install -e .
+      - save_cache: # ** special step to save dependency cache **
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
       - run:
           name:  Run tests in same venv
           command: |
             . venv/bin/activate
-            python -m flake8 --statistics
-            python -m pytest -v --cov .
+            flake8 --statistics
+            pytest -v --cov .
