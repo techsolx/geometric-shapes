@@ -18,7 +18,10 @@ class Rectangle:
 
     def __repr__(self):
         if not self.height:
-            return f"{self.__class__.__name__}(" f"{self.length!r}, {self.width!r})"
+            return (
+                f"{self.__class__.__name__}("
+                f"{self.length!r}, {self.width!r})"
+            )
         else:
             return (
                 f"{self.__class__.__name__}("
