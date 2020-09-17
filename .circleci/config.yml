@@ -1,3 +1,4 @@
+---
 version: 2.0
 jobs:
   build:
@@ -14,15 +15,14 @@ jobs:
             pip install --upgrade pip
             pip install -r requirements.txt
             pip install -e .
-      - save_cache: # ** special step to save dependency cache **
+      - save_cache:  # ** special step to save dependency cache **
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
             - "venv"
       - run:
-          name:  Run tests in same venv
+          name: Run tests in same venv
           command: |
             . venv/bin/activate
             flake8 --statistics
             pytest -v
             coverage run -m pytest
-

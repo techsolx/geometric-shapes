@@ -1,11 +1,10 @@
+---
+install:
+  - "pip install -r requirements.txt"
+  - "pip install -e ."
 language: python
 python:
   - "3.8"
-# install dependencies
-install:
-  - pip install -r requirements.txt
-  - pip install -e .
-# run tests
 script:
-  - flake8 --statistics
-  - pytest -v --cov .
+  - "flake8 --statistics"
+  - "pytest -v --cov ."
