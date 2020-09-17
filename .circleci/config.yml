@@ -23,4 +23,6 @@ jobs:
           command: |
             . venv/bin/activate
             flake8 --statistics
-            pytest -v --cov .
+            pytest -v
+            coverage run -m pytest
+
